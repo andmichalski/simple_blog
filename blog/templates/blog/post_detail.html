@@ -1,0 +1,32 @@
+{% extends "blog/index.html" %}
+
+{% block content %}
+    <div class="post_detail">
+    <p>published: {{ object.created_date }}</p>
+    <h1>{{ post.title }}</h1>
+    <p>{{ object.text|linebreaksbr }}</p>
+    </div>
+    <br>
+    <div class="comments">
+    <h4>Comments</h4>
+
+    {% for comment in comments %}
+        <br>
+        <div class="comment">
+            <p1>{{ comment.text }}</p1>
+            <p>{{ comment.author }}</p>
+        </div>
+     {% empty %}
+        <p1> No comments yet</p1>
+    {% endfor %}
+    </div>
+    <br>
+     <h3>Add comment</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+             <input type="submit" value="Submit">
+        </form>
+    <br>
+    <br>
+{% endblock %}

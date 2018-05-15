@@ -1,0 +1,40 @@
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+    <title>Andrzej Michalski</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+{#    <link rel="stylesheet" href="{% static 'css/blog.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="/static/css/blog.css?{% now "U" %}" />
+</head>
+<body>
+    <div class="my_container">
+    <header class="page-header">
+        <h1>Andrzej Michalski</h1>
+    </header>
+    <nav class="navbar">
+        <span><a href="{% url "index" %}">Blog</a></span>
+        <span><a href="">My work</a></span>
+        <span><a href="{% url "about_me" %}">About me</a></span>
+        <span class="left_navbar">Me on the web</span>
+        <span class="my_links">
+            <a href="https://www.linkedin.com/in/andrzej-michalski-a43a53152/"><img src="{% static 'img/linkedin.png' %}" style="height: 20px;" alt="linkedin"/></a>
+            <a href="https://bitbucket.org/Amfey/"><img class="nav_img" src="{% static 'img/bitbucket.png' %}" alt="bitbucket"/></a>
+            <a href="https://www.codewars.com/users/Amfey"><img class="nav_img" src="{% static 'img/codewars.png' %}" alt="codewars"/></a>
+        </span>
+        <span class="my_cv"><a href="{% static "file/CV_ang.pdf" %}">My CV</a></span>
+    </nav>
+    <br>
+    <div class="content">
+        {% block content %}
+            {% include 'blog/post_list.html' %}
+        {% endblock %}
+    </div>
+    <footer class="footer">
+        Made by Andrzej Michalski in django
+    </footer>
+    </div>
+</body>
+</html>
